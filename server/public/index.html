@@ -16,16 +16,26 @@
       <button>*</button>
       <button>/</button>
       <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+      <button onCick="handleSubmit(event)">=</button>
+      <button onClick="handleClear(event)"">C</button>
     </form>
 
     <section data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
+  
+        <h2 id="recentResult">#00</h2>
     </section>
 
     <section data-testid="resultHistory">
       <!-- The list of calculation results goes here. -->
+       <ul id="historyList">
+        <li>
+          firstNum (op) secondNumber = result
+        </li>
+        <li>
+          firstNum (op) secondNumber = result
+        </li>
+       </ul>
     </section>
   </body>
 </html>
