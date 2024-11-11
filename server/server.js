@@ -7,22 +7,65 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = [
-  {
-    firstNum: 10, //Hardcoded example to be removed
-    secondNumber: 10,
-    operator: "+",
-    result: 20
-  }
-
-]
+let calculations = []
 
 
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+  //Respond with calculations[].
+
+app.get('/calculations', (req, res) => {
+  res.send(calculations)
+})
 
 // POST /calculations
+  //req.body = incoming calculation
+  //call function to get result (getResult(incCalculation))
+    //Will return a result number.
+  //Add result to incCalc object as a 'result' key.
+  //Push incCalc to calculations[]
+  //Respond with status code 201 (created)
+
+app.post('/calculations', (req, res) => {
+  console.log("Incoming req.body: ", req.body)
+
+
+  //give it a new name so it's easier to remember what it is
+  const newCalculation = req.body
+
+  const result = getResult(newCalculation)
+  newCalculation.result = result
+  console.log("Result: ", newCalculation)
+
+  calculations.push(newCalculation)
+  console.log("Calcualtions history after push: ", calculations)
+
+  res.sendStatus(201)
+})
+
+function getResult(calc) {
+  //Switch statement to compare the operator
+    //ex. if '+' then we will return calc.firsNum + calc.secondNum
+
+    switch (calc) {
+      case "+":
+          //will add
+          return calc.firstNum + calc.secondNum
+      case "-":
+          //will subtract
+          return calc.firstNum - calc.secondNum
+      case "*":
+          //will multiply
+          return calc.firtNum * calc.secondNum
+      case "/":
+          //will divide
+          return calc.firstNum / calc.secondNum
+      default:
+        return NaN
+    }
+}
+
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:

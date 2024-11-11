@@ -10,31 +10,25 @@
     <h1>Server-Side Calculator</h1>
 
     <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
+      <input id="firstNumInput" data-testid="numOne" placeholder="First Number">
       <button onClick="setOperator(event, '+')">+</button>
       <button onClick="setOperator(event, '-')">-</button>
       <button onClick="setOperator(event, '*')">*</button>
       <button onClick="setOperator(event, '/')">/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
+      <input id="secondNumInput" data-testid="numTwo" placeholder="Second Number">
       <button onCick="handleSubmit(event)">=</button>
       <button onClick="handleClear(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
-  
-        <h2 id="recentResult">#00</h2>
+        <h2 id="recentResult"></h2>
     </section>
 
     <section data-testid="resultHistory">
       <!-- The list of calculation results goes here. -->
        <ul id="historyList">
-        <li>
-          firstNum (op) secondNumber = result
-        </li>
-        <li>
-          firstNum (op) secondNumber = result
-        </li>
+          <!-- History from server will render as a list item -->
        </ul>
     </section>
   </body>
