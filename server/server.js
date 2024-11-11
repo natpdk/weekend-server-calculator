@@ -7,7 +7,15 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = []
+let calculations = [
+  {
+    firstNum: 10, //Hardcoded example to be removed
+    secondNumber: 10,
+    operator: "+",
+    result: 20
+  }
+
+]
 
 
 // Here's a wonderful place to make some routes:
