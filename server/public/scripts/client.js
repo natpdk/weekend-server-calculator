@@ -2,8 +2,9 @@ console.log('client.js is sourced!');
 
 let operator;
 
-function setOperator(event) {
+function setOperator(event, op) {
     event.preventDefault()
+    console.log("setOperator() has been called with: ", op)
 }
 
 function handleSubmit(event) {

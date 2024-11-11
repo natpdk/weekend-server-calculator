@@ -11,13 +11,13 @@
 
     <form data-testid="calculator">
       <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
+      <button onClick="setOperator(event, '+')">+</button>
+      <button onClick="setOperator(event, '-')">-</button>
+      <button onClick="setOperator(event, '*')">*</button>
+      <button onClick="setOperator(event, '/')">/</button>
       <input data-testid="numTwo" placeholder="Second Number">
       <button onCick="handleSubmit(event)">=</button>
-      <button onClick="handleClear(event)"">C</button>
+      <button onClick="handleClear(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
