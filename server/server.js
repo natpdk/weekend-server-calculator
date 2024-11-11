@@ -15,9 +15,6 @@ let calculations = []
 // GET /calculations
   //Respond with calculations[].
 
-app.get('/calculations', (req, res) => {
-  res.send(calculations)
-})
 
 // POST /calculations
   //req.body = incoming calculation
@@ -28,22 +25,11 @@ app.get('/calculations', (req, res) => {
   //Respond with status code 201 (created)
 
 app.post('/calculations', (req, res) => {
-  console.log("Incoming req.body: ", req.body)
 
-
-  //give it a new name so it's easier to remember what it is
-  const newCalculation = req.body
-
-  const result = getResult(newCalculation)
-  newCalculation.result = result
-  console.log("Result: ", newCalculation)
-
-  calculations.push(newCalculation)
-  console.log("Calcualtions history after push: ", calculations)
-
-  res.sendStatus(201)
 })
 
+  //give it a new name so it's easier to remember what it is
+  
 function getResult(calc) {
   //Switch statement to compare the operator
     //ex. if '+' then we will return calc.firsNum + calc.secondNum
