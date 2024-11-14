@@ -40,7 +40,7 @@ function onSubmit(event) {
         operator: operator
     }
 
-    console.log("New math to senf to the server: ", newMath)
+    console.log("New math to send to the server: ", newMath)
 
     axios({
         method: "POST",
@@ -65,4 +65,26 @@ function clearInputs(event) {
     document.getElementById("firstNumInput").value = ""
     document.getElementById("secondNumInput").value = ""
     operator = undefined
+}
+
+function showMath(history) {
+    let historyList = document.getElementById("historyList")
+    let recentResult = document.getElementById("recentResult")
+
+    console.log("History list is: ", historyList)
+    console.log("Recent result is: ", recentResult)
+    console.log("Most recent number is: ", history[history.length-1].result)
+
+    recentResult.innerText = history[history.length - 1].result
+
+    historyList.innerHTML = ""
+
+    for (let item of history) {
+        console.log("Current item is: ", item)
+        historyList.innerHTML +=`
+             <li>
+                ${item.firstNum} ${item.operator} ${item.secondNum} = ${item.result}
+            </li>
+        `
+    }
 }
