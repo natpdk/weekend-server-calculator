@@ -9,7 +9,7 @@ app.use(express.static('server/public'));
 let calculations = []
 
 
-app.post('/calculations', (req, res) => {
+app.get('/calculations', (req, res) => {
   res.send(calculations)
 })
 
@@ -31,7 +31,7 @@ function getResult(calc) {
   //Switch statement to compare the operator
     //ex. if '+' then we will return calc.firsNum + calc.secondNum
 
-    switch (calc) {
+    switch (calc.operator) {
       case "+":
           //will add
           return calc.firstNum + calc.secondNum
@@ -40,12 +40,12 @@ function getResult(calc) {
           return calc.firstNum - calc.secondNum
       case "*":
           //will multiply
-          return calc.firtNum * calc.secondNum
+          return calc.firstNum * calc.secondNum
       case "/":
           //will divide
           return calc.firstNum / calc.secondNum
       default:
-        return NaN
+        return null
     }
 }
 
