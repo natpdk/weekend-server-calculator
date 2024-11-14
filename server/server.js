@@ -34,16 +34,16 @@ function getResult(calc) {
     switch (calc.operator) {
       case "+":
           //will add
-          return calc.firstNum + calc.secondNum
+          return calc.numOne + calc.numTwo
       case "-":
           //will subtract
-          return calc.firstNum - calc.secondNum
+          return calc.numOne - calc.numTwo
       case "*":
           //will multiply
-          return calc.firstNum * calc.secondNum
+          return calc.numOne * calc.numTwo
       case "/":
           //will divide
-          return calc.firstNum / calc.secondNum
+          return calc.numOne / calc.numTwo
       default:
         return null
     }

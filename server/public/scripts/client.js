@@ -19,7 +19,7 @@ function getHistory() {
         .then((response) => {
             console.log("Successful GET /calculations: ", response.data)
             if (response.data.length > 0) {
-                render(response.data)
+                showMath(response.data)
             }
         })
         .catch((error) => {
@@ -35,8 +35,8 @@ function onSubmit(event) {
     const secondNumInput = document.getElementById("secondNumInput").value
 
     let newMath = {
-        firstNum: Number(firstNumInput),
-        secondNum: Number(secondNumInput),
+        numOne: Number(firstNumInput),
+        numTwo: Number(secondNumInput),
         operator: operator
     }
 
@@ -51,7 +51,7 @@ function onSubmit(event) {
             console.log("Successful POST to /calculations")
 
             getHistory()
-            handleClear(event)
+            clearInputs(event)
         })
         .catch((error) => {
             console.error("Error on POST at /calculations: ", error)
@@ -83,7 +83,7 @@ function showMath(history) {
         console.log("Current item is: ", item)
         historyList.innerHTML +=`
              <li>
-                ${item.firstNum} ${item.operator} ${item.secondNum} = ${item.result}
+                ${item.numOne} ${item.operator} ${item.numTwo} = ${item.result}
             </li>
         `
     }
