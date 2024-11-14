@@ -5,31 +5,28 @@ let PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(express.static('server/public'));
 
-// Global variable that will contain all of the
 // calculation objects:
 let calculations = []
 
 
-// Here's a wonderful place to make some routes:
-
-// GET /calculations
-  //Respond with calculations[].
-
-
-// POST /calculations
-  //req.body = incoming calculation
-  //call function to get result (getResult(incCalculation))
-    //Will return a result number.
-  //Add result to incCalc object as a 'result' key.
-  //Push incCalc to calculations[]
-  //Respond with status code 201 (created)
-
 app.post('/calculations', (req, res) => {
-
+  res.send(calculations)
 })
 
-  //give it a new name so it's easier to remember what it is
-  
+app.post('/calculations', (req, res) => {
+  console.log("Incoming calculation: ", req.body)
+  const newCalc = req.body
+
+  const result = getResult(newCalc)
+  newCalc.result = result
+  console.log("Result is: ", newCalc)
+
+  calculations.push(newCalc)
+  console.log("History after push: ", calculations)
+
+  res.sendStatus(201)
+})
+
 function getResult(calc) {
   //Switch statement to compare the operator
     //ex. if '+' then we will return calc.firsNum + calc.secondNum
